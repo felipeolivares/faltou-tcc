@@ -7,6 +7,7 @@ import routes from "routes/routes";
 import logo from "assets/Logo.png";
 import backIcon from "assets/BackIcon.png";
 import { useFormik } from "formik";
+import axios from "axios";
 
 import useStyles from "../styles";
 
@@ -29,11 +30,19 @@ const Register: React.FC = () => {
     validateOnChange: false,
 
     onSubmit: (values: any) => {
-      // updateAppValues(values);
-      // setPreviousPage(routes.searchDentist);
-      // setPage(routes.resultSearchDentist);
-      // navigate(routes.resultSearchDentist);
-      console.log("teste");
+      if (values.email && values.password) {
+        axios
+          .post("http://localhost:3001/register", {
+            email: values.email,
+            password: values.password,
+          })
+          .then((response) => {
+            console.log("response ", response);
+          })
+          .catch((error) => {
+            console.log("error ", error);
+          });
+      }
     },
   });
 
@@ -102,7 +111,6 @@ const Register: React.FC = () => {
               color="primary"
               variant="contained"
               className="btn-height"
-              onClick={() => console.log("teste")}
               type="submit"
               fullWidth
             >

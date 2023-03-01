@@ -5,6 +5,7 @@ import { TextField, Typography, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import routes from "routes/routes";
 import logo from "assets/Logo.png";
+import axios from "axios";
 
 import useStyles from "../styles";
 import { useFormik } from "formik";
@@ -26,10 +27,19 @@ const Login: React.FC = () => {
     validateOnChange: false,
 
     onSubmit: (values: any) => {
-      // updateAppValues(values);
-      // setPreviousPage(routes.searchDentist);
-      // setPage(routes.resultSearchDentist);
-      // navigate(routes.resultSearchDentist);
+      if (values.email && values.password) {
+        axios
+          .post("http://localhost:3001/login", {
+            email: values.email,
+            password: values.password,
+          })
+          .then((response) => {
+            console.log("response ", response);
+          })
+          .catch((error) => {
+            console.log("error ", error);
+          });
+      }
       console.log("teste");
     },
   });
@@ -82,7 +92,6 @@ const Login: React.FC = () => {
               color="primary"
               variant="contained"
               className="btn-height"
-              onClick={() => console.log("teste")}
               type="submit"
               fullWidth
             >
