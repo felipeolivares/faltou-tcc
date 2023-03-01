@@ -6,6 +6,10 @@ const useStyles = makeStyles(() => ({
     marginRight: "-24px",
     paddingTop: "24px",
   },
+  containerImage: {
+    width: "100px",
+    height: "100px",
+  },
   containerLogin: {
     width: "100vw",
     height: "100vh",
@@ -17,11 +21,12 @@ const useStyles = makeStyles(() => ({
   loginPage: {
     display: "flex",
     flexDirection: "column",
-    padding: "54px",
+    padding: "24px 64px",
   },
   loginMsg: {
     display: "flex",
-    justifyContent: "center",
+    flexDirection: "column",
+    alignItems: "center",
     paddingTop: "24px",
   },
   register: {
@@ -34,6 +39,18 @@ const useStyles = makeStyles(() => ({
     paddingLeft: "2px",
     textDecoration: "underline",
     cursor: "pointer",
+  },
+  containerBack: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    paddingTop: "12px",
+    paddingRight: "24px",
+    cursor: "pointer",
+  },
+  imageBackIcon: {
+    width: "24px",
+    heigth: "24px",
   },
 }));
 
