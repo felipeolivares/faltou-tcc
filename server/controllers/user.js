@@ -54,12 +54,12 @@ export const loginUser = (req, res) => {
                 if (result) {
                     res.status(200).json({ msg: "Usuário logado com sucesso!" });
                 } else {
-                    res.status(500).json({ msg: "Senha está incorreta!" });
+                    res.status(500).json({ msg: "Usuário ou senha incorreta." });
                 }
             })
 
         } else {
-            res.status(500).json({ msg: "Conta não encontrada!" });
+            res.status(500).json({ msg: "Usuário ou senha incorreta." });
         }
 
 

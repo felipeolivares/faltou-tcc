@@ -1,18 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import * as Yup from "yup";
 import { Box, Paper } from "@material-ui/core";
-import { TextField, Typography, Button } from "@mui/material";
+import {
+  TextField,
+  Typography,
+  Button,
+  InputAdornment,
+  IconButton,
+} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import routes from "routes/routes";
 import logo from "assets/Logo.png";
-import axios from "axios";
-
 import useStyles from "../styles";
 import { useFormik } from "formik";
+import loginService from "services/loginService";
+import Loading from "components/Loading";
+import { VisibilityOff, Visibility } from "@material-ui/icons";
 
 const Login: React.FC = () => {
   const classes = useStyles();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const appValues = {
     email: "",
     password: "",
@@ -20,29 +29,36 @@ const Login: React.FC = () => {
 
   const formik = useFormik({
     validationSchema: Yup.object().shape({
-      email: Yup.string().required("Campo Obrigatório"),
-      password: Yup.string().required("Campo Obrigatório"),
+      email: Yup.string()
+        .email("Precisa ser um e-mail válido")
+        .required("Campo obrigatório"),
+      password: Yup.string().required("Campo obrigatório"),
     }),
     initialValues: appValues,
     validateOnChange: false,
 
     onSubmit: (values: any) => {
       if (values.email && values.password) {
-        axios
-          .post("http://localhost:3001/login", {
-            email: values.email,
-            password: values.password,
-          })
-          .then((response) => {
-            console.log("response ", response);
+        setLoading(true);
+        loginService
+          .postLogin(values.email, values.password)
+          .then(() => {
+            navigate(routes.calculate);
           })
           .catch((error) => {
-            console.log("error ", error);
+            formik.setFieldError("email", error?.response?.data?.msg);
+            formik.setFieldError("password", error?.response?.data?.msg);
+          })
+          .finally(() => {
+            setLoading(false);
           });
       }
-      console.log("teste");
     },
   });
+
+  const handleMouseDownPassword = (event: any) => {
+    event.preventDefault();
+  };
 
   const onClickValue = () => {
     navigate(routes.register);
@@ -50,6 +66,7 @@ const Login: React.FC = () => {
 
   return (
     <form onSubmit={formik.handleSubmit}>
+      <Loading loading={loading} />
       <Box className={classes.containerLogin}>
         <Paper elevation={3} className={classes.loginPage}>
           <Box className={classes.loginMsg}>
@@ -66,6 +83,7 @@ const Login: React.FC = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               error={!!formik.touched.email && !!formik.errors.email}
+              helperText={formik.errors.email}
               label="Informe seu e-mail"
               placeholder="Informe seu e-mail"
               autoComplete="off"
@@ -80,10 +98,26 @@ const Login: React.FC = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               error={!!formik.touched.password && !!formik.errors.password}
+              helperText={formik.errors.password}
               label="Informe sua senha"
               placeholder="Informe sua senha"
               autoComplete="off"
               fullWidth
+              type={showPassword ? "text" : "password"}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      onClick={() => {
+                        setShowPassword(!showPassword);
+                      }}
+                      onMouseDown={handleMouseDownPassword}
+                    >
+                      {showPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
           </Box>
           <Box className="pt12">
