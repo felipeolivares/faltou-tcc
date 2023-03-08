@@ -12,11 +12,11 @@ import { VisibilityOff, Visibility } from "@material-ui/icons";
 import { useNavigate } from "react-router-dom";
 import routes from "routes/routes";
 import logo from "assets/Logo.png";
-import backIcon from "assets/BackIcon.png";
 import { useFormik } from "formik";
 import useStyles from "../styles";
 import loginService from "services/loginService";
 import Loading from "components/Loading";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
 const Register: React.FC = () => {
   const classes = useStyles();
@@ -179,7 +179,7 @@ const Register: React.FC = () => {
           </Box>
           <Box className={classes.containerBack} onClick={() => onClickValue()}>
             <Box className={classes.imageBackIcon}>
-              <img alt="backIcon" src={backIcon} />
+              <ArrowBackIosNewIcon fontSize="small" />
             </Box>
             <Typography
               fontSize="12px"

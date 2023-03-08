@@ -5,11 +5,9 @@ import "./styles/main.scss";
 
 const App: React.FC = () => {
   return (
-    <div className="app-color">
-      <AppContextProvider>
-        <Router />
-      </AppContextProvider>
-    </div>
+    <AppContextProvider>
+      <Router />
+    </AppContextProvider>
   );
 };
 

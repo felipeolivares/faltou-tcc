@@ -70,7 +70,7 @@ const Login: React.FC = () => {
       <Box className={classes.containerLogin}>
         <Paper elevation={3} className={classes.loginPage}>
           <Box className={classes.loginMsg}>
-            <img className={classes.containerImage} alt="iconPlus" src={logo} />
+            <img className={classes.containerImage} alt="brand" src={logo} />
             <Typography variant="h4" fontWeight="bold">
               Login
             </Typography>

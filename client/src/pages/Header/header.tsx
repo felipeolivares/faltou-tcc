@@ -2,30 +2,33 @@ import React from "react";
 import { Box, Grid } from "@material-ui/core";
 import { isMobile } from "utils";
 import useStyles from "./styles";
-import backIcon from "assets/BackIcon.png";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import { useNavigate } from "react-router-dom";
+import routes from "routes/routes";
 
 const Header: React.FC = () => {
   const classes = useStyles();
+  const navigate = useNavigate();
 
   return (
-    <Grid container>
-      <Grid item xs={2}>
-        <Box
-          className={classes.containerBack}
-          onClick={() => console.log("irru")}
-        >
-          <Box className={classes.imageBackIcon}>
-            <img alt="backIcon" src={backIcon} />
+    <Box className={classes.container} display="flex">
+      <Grid container>
+        <Grid item xs={2}>
+          <Box
+            className={classes.containerBack}
+            onClick={() => navigate(routes.login)}
+          >
+            <Box className={classes.imageBackIcon}>
+              <ArrowBackIosNewIcon fontSize="small" />
+            </Box>
+            {!isMobile() && <Box className={classes.text}>Sair</Box>}
           </Box>
-          {!isMobile() && <Box className={classes.text}>Voltar</Box>}
-        </Box>
+        </Grid>
+        <Grid item xs={8}>
+          {/* <img alt="brand" className={classes.containerBrand} src={logo} /> */}
+        </Grid>
       </Grid>
-      <Grid item xs={8}>
-        <Box className={classes.containerBrand}>
-          {/* <img alt="brand" src={brand} /> */}
-        </Box>
-      </Grid>
-    </Grid>
+    </Box>
   );
 };
 

@@ -4,12 +4,7 @@ const useStyles = makeStyles(() => ({
   container: {
     display: "flex",
     flexDirection: "row",
-  },
-  containerBrand: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
+    padding: "10px",
   },
   containerBack: {
     display: "flex",
@@ -27,7 +22,8 @@ const useStyles = makeStyles(() => ({
   imageBackIcon: {
     width: "24px",
     heigth: "24px",
-    paddingTop: "2px",
+    paddingTop: "4px",
+    color: "#0061A0",
   },
 }));
 

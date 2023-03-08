@@ -1,11 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(() => ({
-  divider: {
-    marginLeft: "-24px",
-    marginRight: "-24px",
-    paddingTop: "24px",
-  },
   containerImage: {
     width: "100px",
     height: "100px",
@@ -51,6 +46,19 @@ const useStyles = makeStyles(() => ({
   imageBackIcon: {
     width: "24px",
     heigth: "24px",
+    paddingTop: "2px",
+    color: "#0061A0",
+  },
+  paperCalc: {
+    margin: "6px",
+    padding: "8px",
+    height: "100%",
+  },
+  paperCalcMob: {
+    margin: "6px",
+    padding: "8px",
+    marginTop: "16px",
+    height: "100%",
   },
 }));
 
