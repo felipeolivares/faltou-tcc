@@ -47,8 +47,19 @@ const Login: React.FC = () => {
             navigate(routes.calculate);
           })
           .catch((error) => {
-            formik.setFieldError("email", error?.response?.data?.msg);
-            formik.setFieldError("password", error?.response?.data?.msg);
+            if (error?.response?.data?.msg) {
+              formik.setFieldError("email", error?.response?.data?.msg);
+              formik.setFieldError("password", error?.response?.data?.msg);
+            } else {
+              formik.setFieldError(
+                "email",
+                "Erro, tentar novamente mais tarde"
+              );
+              formik.setFieldError(
+                "password",
+                "Erro, tentar novamente mais tarde"
+              );
+            }
           })
           .finally(() => {
             setLoading(false);
@@ -117,7 +128,7 @@ const Login: React.FC = () => {
                   value={formik.values.email}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  error={!!formik.touched.email && !!formik.errors.email}
+                  error={!!formik.errors.email}
                   helperText={formik.errors.email}
                   label="Informe seu e-mail"
                   placeholder="Informe seu e-mail"
@@ -132,7 +143,7 @@ const Login: React.FC = () => {
                   value={formik.values.password}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  error={!!formik.touched.password && !!formik.errors.password}
+                  error={!!formik.errors.password}
                   helperText={formik.errors.password}
                   label="Informe sua senha"
                   placeholder="Informe sua senha"
