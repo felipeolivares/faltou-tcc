@@ -57,7 +57,7 @@ const useStyles = makeStyles(() => ({
   paperCalcMob: {
     margin: "6px",
     padding: "8px",
-    marginTop: "16px",
+    marginTop: "32px",
     height: "100%",
   },
 }));

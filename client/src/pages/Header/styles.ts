@@ -5,6 +5,8 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     flexDirection: "row",
     padding: "10px",
+    background: "#E7B10A",
+    boxShadow: "0 4px 6px -6px #222",
   },
   containerBack: {
     display: "flex",
@@ -13,7 +15,7 @@ const useStyles = makeStyles(() => ({
     cursor: "pointer",
   },
   text: {
-    color: "#0061A0",
+    color: "#000000",
     fontSize: "16px",
     fontFamily: "'NotoSans-Bold', Arial, Helvetica, sans-serif",
     fontWeight: "bold",
@@ -23,7 +25,7 @@ const useStyles = makeStyles(() => ({
     width: "24px",
     heigth: "24px",
     paddingTop: "4px",
-    color: "#0061A0",
+    color: "#000000",
   },
 }));
 
