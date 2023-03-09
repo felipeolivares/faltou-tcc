@@ -6,7 +6,7 @@ import { MLRadio } from "components";
 import { useAppContext } from "context/useAppContext";
 
 import { useFormik } from "formik";
-import { allowNumbersOnly, removeSpecialCharsAndNumbers } from "utils";
+import { allowNumbersOnly } from "utils";
 import formValidate from "../validator/formValidate";
 
 const Form: React.FC = () => {
@@ -43,7 +43,7 @@ const Form: React.FC = () => {
           <TextField
             id="subject"
             name="subject"
-            value={removeSpecialCharsAndNumbers(formik.values.subject || "")}
+            value={formik.values.subject}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             error={!!formik.errors.subject}
@@ -116,7 +116,7 @@ const Form: React.FC = () => {
         </Grid>
         <Grid item xs={12} className="pt16">
           <Typography variant="body1" fontWeight="bold">
-            Quantidade de dias da semana que você faltou na matéria.
+            Quantidade de dias que você faltou na matéria.
           </Typography>
         </Grid>
         <Grid item xs={6} className="pt8">

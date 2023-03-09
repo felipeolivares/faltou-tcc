@@ -30,6 +30,10 @@ const formValidate = (values: appValues) => {
     errors.amountDaysClasses = "Campo obrigatório";
     hasError = true;
   }
+  if (values.amountDaysClasses && Number(values.amountDaysClasses) > 7) {
+    errors.amountDaysClasses = "Valor máximo é de 7 dias";
+    hasError = true;
+  }
   if (!values.amountAbsence) {
     errors.amountAbsence = "Campo obrigatório";
     hasError = true;
