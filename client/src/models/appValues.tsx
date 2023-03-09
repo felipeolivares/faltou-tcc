@@ -1,11 +1,11 @@
 export interface appValues {
-  identify?: string;
-  plan?: string;
-  expertise?: string;
-  dentistName?: string;
-  cro?: string;
-  state?: string;
-  city?: string;
-  neighborhood?: string;
-  cep?: string;
+  subject?: string;
+  startClasses?: string;
+  finishClasses?: string;
+  amountDaysClasses?: string;
+  amountAbsence?: string;
+  radioholiday?: string;
+  holiday?: string;
+  radioPct?: string;
+  percentage?: string;
 }

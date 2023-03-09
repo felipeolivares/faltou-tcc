@@ -1,12 +1,22 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(() => ({
+  containerHome: {
+    display: "flex",
+    flexDirection: "column",
+  },
   containerImage: {
     width: "100px",
     height: "100px",
   },
+  containerLoginMobile: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    margin: "16px",
+  },
   containerLogin: {
-    width: "100vw",
     height: "100vh",
     display: "flex",
     flexDirection: "row",
@@ -48,17 +58,6 @@ const useStyles = makeStyles(() => ({
     heigth: "24px",
     paddingTop: "2px",
     color: "#0061A0",
-  },
-  paperCalc: {
-    margin: "6px",
-    padding: "8px",
-    height: "100%",
-  },
-  paperCalcMob: {
-    margin: "6px",
-    padding: "8px",
-    marginTop: "32px",
-    height: "100%",
   },
 }));
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box } from "@material-ui/core";
+import { Box, Grid } from "@material-ui/core";
 import { Typography } from "@mui/material";
 import useStyles from "./styles";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";

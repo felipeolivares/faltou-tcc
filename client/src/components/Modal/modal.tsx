@@ -1,6 +1,5 @@
 import React, { ReactNode } from "react";
-import CloseButtonImg from "assets/CloseButtonImg.png";
-import CloseButtonBlack from "assets/CloseButtonBlack.png";
+import CloseIcon from "@mui/icons-material/Close";
 import {
   LayoutModal,
   ModalContainer,
@@ -55,7 +54,7 @@ const Modal: React.FC<modalProps> = ({ isInfoModal = false, ...Props }) => {
                   onClick={() => Props.onClose()}
                   role="button"
                 >
-                  <img src={isInfoModal ? CloseButtonBlack : CloseButtonImg} />
+                  <CloseIcon />
                 </CloseButton>
               </Title>
             )}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as Yup from "yup";
-import { Box, Paper } from "@material-ui/core";
+import { Box, Grid, Paper } from "@material-ui/core";
 import {
   TextField,
   Typography,
@@ -16,6 +16,7 @@ import { useFormik } from "formik";
 import loginService from "services/loginService";
 import Loading from "components/Loading";
 import { VisibilityOff, Visibility } from "@material-ui/icons";
+import { isMobile } from "utils";
 
 const Login: React.FC = () => {
   const classes = useStyles();
@@ -67,86 +68,122 @@ const Login: React.FC = () => {
   return (
     <form onSubmit={formik.handleSubmit}>
       <Loading loading={loading} />
-      <Box className={classes.containerLogin}>
-        <Paper elevation={3} className={classes.loginPage}>
-          <Box className={classes.loginMsg}>
-            <img className={classes.containerImage} alt="brand" src={logo} />
-            <Typography variant="h4" fontWeight="bold">
-              Login
-            </Typography>
-          </Box>
-          <Box className="pt16">
-            <TextField
-              id="email"
-              name="email"
-              value={formik.values.email}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={!!formik.touched.email && !!formik.errors.email}
-              helperText={formik.errors.email}
-              label="Informe seu e-mail"
-              placeholder="Informe seu e-mail"
-              autoComplete="off"
-              fullWidth
-            />
-          </Box>
-          <Box className="pt12">
-            <TextField
-              id="password"
-              name="password"
-              value={formik.values.password}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={!!formik.touched.password && !!formik.errors.password}
-              helperText={formik.errors.password}
-              label="Informe sua senha"
-              placeholder="Informe sua senha"
-              autoComplete="off"
-              fullWidth
-              type={showPassword ? "text" : "password"}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton
-                      onClick={() => {
-                        setShowPassword(!showPassword);
-                      }}
-                      onMouseDown={handleMouseDownPassword}
-                    >
-                      {showPassword ? <Visibility /> : <VisibilityOff />}
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </Box>
-          <Box className="pt12">
-            <Button
-              id="enterbtn"
-              color="primary"
-              variant="contained"
-              className="btn-height"
-              type="submit"
-              fullWidth
-            >
-              <Typography variant="caption" fontWeight="bold">
-                Entrar
+      <Grid container>
+        <Grid item xs={isMobile() ? 12 : 6}>
+          <Box
+            className={
+              isMobile() ? classes.containerLoginMobile : classes.containerLogin
+            }
+          >
+            <Box className={classes.containerHome}>
+              <Typography variant="h4" marginLeft={isMobile() ? "" : "64px"}>
+                POSSO FALTAR?
               </Typography>
-            </Button>
+              <Typography
+                variant="h6"
+                marginTop="8px"
+                marginLeft={isMobile() ? "" : "64px"}
+              >
+                Olá, o site possuí o objetivo de ajudar você a controlar e
+                verificar suas faltas nas matérias, com isso você poderá saber
+                se ainda possuí frequência para organizar suas faltas. Faça o
+                login ou o cadastro para acessar a ferramenta de cálculo e
+                armazenar suas frequências.
+              </Typography>
+            </Box>
           </Box>
-          <Box className={classes.register}>
-            <Typography fontSize="12px">Não é registrado?</Typography>
-            <Typography
-              fontSize="12px"
-              className={classes.createAccount}
-              onClick={onClickValue}
-              id="registerClick"
-            >
-              Crie uma conta.
-            </Typography>
+        </Grid>
+        <Grid item xs={isMobile() ? 12 : 6}>
+          <Box
+            className={
+              isMobile() ? classes.containerLoginMobile : classes.containerLogin
+            }
+          >
+            <Paper elevation={3} className={classes.loginPage}>
+              <Box className={classes.loginMsg}>
+                <img
+                  className={classes.containerImage}
+                  alt="brand"
+                  src={logo}
+                />
+                <Typography variant="h4" fontWeight="bold">
+                  Login
+                </Typography>
+              </Box>
+              <Box className="pt16">
+                <TextField
+                  id="email"
+                  name="email"
+                  value={formik.values.email}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  error={!!formik.touched.email && !!formik.errors.email}
+                  helperText={formik.errors.email}
+                  label="Informe seu e-mail"
+                  placeholder="Informe seu e-mail"
+                  autoComplete="off"
+                  fullWidth
+                />
+              </Box>
+              <Box className="pt16">
+                <TextField
+                  id="password"
+                  name="password"
+                  value={formik.values.password}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  error={!!formik.touched.password && !!formik.errors.password}
+                  helperText={formik.errors.password}
+                  label="Informe sua senha"
+                  placeholder="Informe sua senha"
+                  autoComplete="off"
+                  fullWidth
+                  type={showPassword ? "text" : "password"}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          onClick={() => {
+                            setShowPassword(!showPassword);
+                          }}
+                          onMouseDown={handleMouseDownPassword}
+                        >
+                          {showPassword ? <Visibility /> : <VisibilityOff />}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </Box>
+              <Box className="pt16">
+                <Button
+                  id="enterbtn"
+                  color="primary"
+                  variant="contained"
+                  type="submit"
+                  fullWidth
+                  size="large"
+                >
+                  <Typography variant="caption" fontWeight="bold">
+                    Entrar
+                  </Typography>
+                </Button>
+              </Box>
+              <Box className={classes.register}>
+                <Typography fontSize="12px">Não é registrado?</Typography>
+                <Typography
+                  fontSize="12px"
+                  className={classes.createAccount}
+                  onClick={onClickValue}
+                  id="registerClick"
+                >
+                  Crie uma conta.
+                </Typography>
+              </Box>
+            </Paper>
           </Box>
-        </Paper>
-      </Box>
+        </Grid>
+      </Grid>
     </form>
   );
 };

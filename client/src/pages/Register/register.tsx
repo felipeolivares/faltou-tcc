@@ -100,7 +100,7 @@ const Register: React.FC = () => {
               fullWidth
             />
           </Box>
-          <Box className="pt12">
+          <Box className="pt16">
             <TextField
               id="password"
               name="password"
@@ -130,7 +130,7 @@ const Register: React.FC = () => {
               }}
             />
           </Box>
-          <Box className="pt12">
+          <Box className="pt16">
             <TextField
               id="confirmPassword"
               name="confirmPassword"
@@ -163,14 +163,14 @@ const Register: React.FC = () => {
               }}
             />
           </Box>
-          <Box className="pt12">
+          <Box className="pt16">
             <Button
               id="searchbtn"
               color="primary"
               variant="contained"
-              className="btn-height"
               type="submit"
               fullWidth
+              size="large"
             >
               <Typography variant="caption" fontWeight="bold">
                 Cadastrar

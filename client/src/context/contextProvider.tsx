@@ -32,15 +32,15 @@ export const ValuesAppContext =
 
 export const AppContextProvider = ({ children }: Props) => {
   const initialValues: appValues = {
-    identify: "",
-    plan: "",
-    expertise: "",
-    dentistName: "",
-    cro: "",
-    state: "",
-    city: "",
-    neighborhood: "",
-    cep: "",
+    subject: "",
+    startClasses: "",
+    finishClasses: "",
+    amountDaysClasses: "",
+    amountAbsence: "",
+    radioholiday: "Não",
+    holiday: "",
+    radioPct: "Sim",
+    percentage: "",
   };
 
   const [appValues, setAppValues] = useState<appValues>(initialValues);
