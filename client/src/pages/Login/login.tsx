@@ -51,13 +51,10 @@ const Login: React.FC = () => {
               formik.setFieldError("email", error?.response?.data?.msg);
               formik.setFieldError("password", error?.response?.data?.msg);
             } else {
-              formik.setFieldError(
-                "email",
-                "Erro, tentar novamente mais tarde"
-              );
+              formik.setFieldError("email", "Erro, tente novamente mais tarde");
               formik.setFieldError(
                 "password",
-                "Erro, tentar novamente mais tarde"
+                "Erro, tente novamente mais tarde"
               );
             }
           })

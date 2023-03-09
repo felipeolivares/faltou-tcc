@@ -58,7 +58,7 @@ const Register: React.FC = () => {
               } else {
                 formik.setFieldError(
                   "email",
-                  "Erro, tentar novamente mais tarde"
+                  "Erro, tente novamente mais tarde"
                 );
               }
             })
