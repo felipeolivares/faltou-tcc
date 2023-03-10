@@ -34,37 +34,18 @@ export const Title = styled.div`
   justify-content: space-between;
   margin: 40px 0px 24px 40px;
 `;
-export const Description = styled.div`
-  font-size: 14px;
-  font-family: "NotoSans", Arial, Helvetica, sans-serif !important;
-  color: #333333;
-  margin-left: 0;
-  max-width: 100%;
-`;
-export const ContainerDescription = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: no-wrap;
-  padding: 0px 40px 40px 40px;
-`;
-
-export const ContainerInfoPlan = styled.div`
-  padding: 0px 40px 40px 40px;
-`;
-
 export const ContainerButton = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: no-wrap;
   padding: 0px 40px 40px 40px;
 `;
-
 export const CloseButton = styled.div`
-  height: 18px;
   width: 12px;
   font-weight: 300;
   position: absolute;
-  right: 50px;
+  right: 30px;
+  top: 16px;
   color: #666666;
   cursor: pointer;
 `;

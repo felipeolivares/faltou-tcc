@@ -5,12 +5,9 @@ import {
   ModalContainer,
   Title,
   CloseButton,
-  Description,
-  ContainerDescription,
   ContainerButton,
-  ContainerInfoPlan,
 } from "./styles";
-import { Divider, Grid } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import { Button, Typography } from "@mui/material";
 
 export interface modalProps {
@@ -58,73 +55,62 @@ const Modal: React.FC<modalProps> = ({ isInfoModal = false, ...Props }) => {
                 </CloseButton>
               </Title>
             )}
-            {isInfoModal && <Divider />}
-            {!isInfoModal && (
-              <ContainerDescription>
-                <Description>{Props.description}</Description>
-              </ContainerDescription>
-            )}
-            {isInfoModal && (
-              <ContainerInfoPlan>{Props.infoPlan}</ContainerInfoPlan>
-            )}
-            {!isInfoModal && (
-              <ContainerButton>
-                <>
-                  <Grid
-                    className={Props.buttonLabel2 ? "pr10" : ""}
-                    item
-                    xs={Props.buttonLabel2 ? 6 : 12}
+            <ContainerButton>
+              <>
+                <Grid
+                  className={Props.buttonLabel2 ? "pr10" : ""}
+                  item
+                  xs={Props.buttonLabel2 ? 6 : 12}
+                >
+                  <Button
+                    id="searchbtn"
+                    color="primary"
+                    variant={
+                      Props.buttonLabel2 && !Props.disabled
+                        ? "outlined"
+                        : "contained"
+                    }
+                    className="btn-height"
+                    onClick={Props.onClickButton}
+                    fullWidth
+                    type="submit"
+                    disabled={Props.disabled ? true : false}
                   >
+                    <Typography
+                      fontFamily="'NotoSans', Arial, Helvetica, sans-serif"
+                      fontSize="14px"
+                      fontWeight="bold"
+                      textTransform="uppercase"
+                      color={Props.disabled ? "#000000" : ""}
+                    >
+                      {Props.buttonLabel}
+                    </Typography>
+                  </Button>
+                </Grid>
+                {Props.buttonLabel2 && (
+                  <Grid className="pl10" item xs={6}>
                     <Button
                       id="searchbtn"
                       color="primary"
-                      variant={
-                        Props.buttonLabel2 && !Props.disabled
-                          ? "outlined"
-                          : "contained"
-                      }
+                      variant="contained"
                       className="btn-height"
-                      onClick={Props.onClickButton}
+                      onClick={Props.onClickButton2}
                       fullWidth
                       type="submit"
-                      disabled={Props.disabled ? true : false}
                     >
                       <Typography
                         fontFamily="'NotoSans', Arial, Helvetica, sans-serif"
                         fontSize="14px"
                         fontWeight="bold"
                         textTransform="uppercase"
-                        color={Props.disabled ? "#000000" : ""}
                       >
-                        {Props.buttonLabel}
+                        {Props.buttonLabel2}
                       </Typography>
                     </Button>
                   </Grid>
-                  {Props.buttonLabel2 && (
-                    <Grid className="pl10" item xs={6}>
-                      <Button
-                        id="searchbtn"
-                        color="primary"
-                        variant="contained"
-                        className="btn-height"
-                        onClick={Props.onClickButton2}
-                        fullWidth
-                        type="submit"
-                      >
-                        <Typography
-                          fontFamily="'NotoSans', Arial, Helvetica, sans-serif"
-                          fontSize="14px"
-                          fontWeight="bold"
-                          textTransform="uppercase"
-                        >
-                          {Props.buttonLabel2}
-                        </Typography>
-                      </Button>
-                    </Grid>
-                  )}
-                </>
-              </ContainerButton>
-            )}
+                )}
+              </>
+            </ContainerButton>
           </ModalContainer>
         </LayoutModal>
       )}

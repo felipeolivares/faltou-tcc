@@ -207,6 +207,7 @@ const Form: React.FC = () => {
             color="primary"
             variant="contained"
             type="submit"
+            size="large"
             onClick={handleSubmit}
           >
             <Typography variant="caption" fontWeight="bold">

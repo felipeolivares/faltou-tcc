@@ -4,7 +4,7 @@ const useStyles = makeStyles(() => ({
   paperCalc: {
     margin: "6px",
     padding: "16px",
-    height: "100%",
+    height: "auto",
   },
   ctnButton: {
     display: "flex",

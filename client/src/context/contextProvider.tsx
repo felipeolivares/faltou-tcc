@@ -4,12 +4,8 @@ import { appValues } from "models/appValues";
 type ValuesAppContextType = {
   appValues: appValues;
   updateAppValues: (newState: appValues) => void;
-  // setIsSubstitution: (newState: boolean) => void;
-  // isSubstitution: boolean;
-  // setPreviousPage: (newState: string) => void;
-  // previousPage: string;
-  // setPage: (newState: string) => void;
-  // page: string;
+  arrayAppValues: appValues[];
+  updateArrayAppValues: (newState: appValues) => void;
 };
 
 type Props = {
@@ -19,12 +15,8 @@ type Props = {
 const initialState = {
   appValues: {},
   updateAppValues: () => undefined,
-  // setIsSubstitution: () => undefined,
-  // isSubstitution: false,
-  // setPreviousPage: () => undefined,
-  // previousPage: "",
-  // setPage: () => undefined,
-  // page: "",
+  arrayAppValues: [],
+  updateArrayAppValues: () => undefined,
 };
 
 export const ValuesAppContext =
@@ -42,11 +34,18 @@ export const AppContextProvider = ({ children }: Props) => {
     radioPct: "Sim",
     percentage: "",
   };
+  const initialArrayValue = [{}];
 
   const [appValues, setAppValues] = useState<appValues>(initialValues);
+  const [arrayAppValues, setArrayAppValues] =
+    useState<appValues[]>(initialArrayValue);
 
   const updateAppValues = useCallback((data: any) => {
     setAppValues(data);
+  }, []);
+
+  const updateArrayAppValues = useCallback((data: any) => {
+    setArrayAppValues(data);
   }, []);
 
   return (
@@ -54,6 +53,8 @@ export const AppContextProvider = ({ children }: Props) => {
       value={{
         appValues,
         updateAppValues,
+        arrayAppValues,
+        updateArrayAppValues,
       }}
     >
       {children}
